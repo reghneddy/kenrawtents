@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kenraw Tents Limited</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    /* Global Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Body */
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f6f8fa;
+      color: #2e2e2e;
+      line-height: 1.6;
+    }
+
+    /* Header Styling */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 40px 30px;
+      background-color: #222;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    header .logo img {
+      max-width: 180px;
+    }
+
+    header nav ul {
+      list-style: none;
+      display: flex;
+    }
+
+    header nav ul li {
+      margin-left: 40px;
+    }
+
+    header nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 600;
+      transition: color 0.3s ease-in-out;
+    }
+
+    header nav ul li a:hover {
+      color: #ffcc00;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(120deg, rgba(70, 130, 180, 0.5), rgba(50, 115, 220, 0.5)), url('tent1.jpg');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      text-align: center;
+      padding: 120px 20px;
+      position: relative;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    .hero .hero-text {
+      position: relative;
+    }
+
+    .hero h1 {
+      font-size: 4rem;
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+      margin-bottom: 30px;
+      font-weight: 400;
+    }
+
+    .hero .btn {
+      background-color: #ffcc00;
+      color: #222;
+      padding: 18px 35px;
+      font-size: 1.2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .hero .btn:hover {
+      background-color: #e6b800;
+      transform: scale(1.05);
+    }
+
+    /* Carousel Section */
+    .carousel {
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+      margin-top: 50px;
+    }
+
+    .carousel-images {
+      display: flex;
+      transition: transform 0.5s ease;
+    }
+
+    .carousel img {
+      width: 100%;
+      height: 550px;
+      object-fit: cover;
+      border-radius: 15px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    }
+
+    .carousel-btns {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+    }
+
+    .carousel-btns button {
+      background-color: rgba(0, 0, 0, 0.4);
+      color: white;
+      border: none;
+      padding: 20px;
+      cursor: pointer;
+      border-radius: 50%;
+      transition: background 0.3s ease;
+    }
+
+    .carousel-btns button:hover {
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+
+    /* Products Section */
+    .products {
+      padding: 80px 20px;
+      background-color: #ffffff;
+      text-align: center;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+      margin-top: 60px;
+    }
+
+    .products h2 {
+      font-size: 3rem;
+      margin-bottom: 40px;
+      font-weight: 700;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 40px;
+      margin-top: 20px;
+    }
+
+    .product-card {
+      background-color: #f8f9fa;
+      border-radius: 15px;
+      padding: 30px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .product-card img {
+      max-width: 100%;
+      border-radius: 15px;
+      object-fit: cover;
+      height: 250px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .product-card h3 {
+      margin-top: 15px;
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .product-card p {
+      margin-top: 10px;
+      font-size: 1rem;
+      color: #666;
+    }
+
+    .product-card .btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 15px 30px;
+      background-color: #ffcc00;
+      color: #222;
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: 50px;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .product-card .btn:hover {
+      background-color: #e6b800;
+      transform: scale(1.05);
+    }
+
+    .product-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Search Section */
+    .search-section {
+      background-color: #f6f8fa;
+      padding: 80px 20px;
+      text-align: center;
+    }
+
+    .search-section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+      font-weight: 600;
+    }
+
+    .search-section input {
+      width: 50%;
+      padding: 15px;
+      font-size: 1.1rem;
+      border: 2px solid #ccc;
+      border-radius: 25px;
+      outline: none;
+      transition: border-color 0.3s ease;
+    }
+
+    .search-section input:focus {
+      border-color: #ffcc00;
+    }
+
+    .search-results {
+      margin-top: 20px;
+      font-size: 1.2rem;
+      color: #333;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #222;
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    footer p {
+      font-size: 1rem;
+      margin-bottom: 10px;
+    }
+
+    footer .social-media a {
+      margin: 0 20px;
+      color: white;
+      font-size: 1.6rem;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    footer .social-media a:hover {
+      color: #ffcc00;
+    }
+
+    /* AI Features Section */
+    .recommendation-section {
+      background-color: #f8f9fa;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .recommendation-section select, .recommendation-section button {
+      padding: 12px 20px;
+      font-size: 1.1rem;
+      margin-top: 20px;
+      border: 2px solid #ccc;
+      border-radius: 30px;
+      outline: none;
+      transition: border-color 0.3s ease;
+    }
+
+    .recommendation-section button {
+      background-color: #ffcc00;
+      color: #333;
+      cursor: pointer;
+    }
+
+    .recommendation-section select:focus, .recommendation-section button:focus {
+      border-color: #ffcc00;
+    }
+
+    .recommendation-section p {
+      margin-top: 20px;
+      font-size: 1.2rem;
+      color: #333;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+
+      .product-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .search-section input {
+        width: 80%;
+      }
+
+      .carousel img {
+        height: 400px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <img src="logo.png" alt="Kenraw Tents Limited Logo">
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="hero-text">
+      <h1>Welcome to Kenraw Tents Limited</h1>
+      <p>Your trusted partner for premium tents for all occasions.</p>
+      <a href="#products" class="btn">Explore Our Products</a>
+    </div>
+  </section>
+
+  <!-- Image Carousel -->
+  <section class="carousel">
+    <div class="carousel-images">
+      <img src="te.JPG" alt="Tent 1">
+      <img src="TYY.JPG" alt="Tent 2">
+      <img src="TEE.JPG" alt="Tent 3">
+      <img src="TEEE.JPG">
+    </div>
+    <div class="carousel-btns">
+      <button onclick="moveCarousel(-1)">&#10094;</button>
+      <button onclick="moveCarousel(1)">&#10095;</button>
+    </div>
+  </section>
+
+  <!-- Products Section -->
+  <section id="products" class="products">
+    <h2>Our Tents</h2>
+    <div class="product-grid">
+      <div class="product-card">
+        <img src="tent1.jpg" alt="Event Tent">
+        <h3>Event Tent</h3>
+        <p>Perfect for outdoor events like weddings and parties.</p>
+        <a href="#" class="btn">Learn More</a>
+      </div>
+      <div class="product-card">
+        <img src="tent2.jpg" alt="Camping Tent">
+        <h3>Camping Tent</h3>
+        <p>Durable and spacious tents for your outdoor adventures.</p>
+        <a href="#" class="btn">Learn More</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- AI-Based Product Recommendation -->
+  <section id="recommendation" class="recommendation-section">
+    <h2>AI Tent Recommendation</h2>
+    <label for="tent-type">What type of tent are you looking for?</label>
+    <select id="tent-type">
+      <option value="event">Event</option>
+      <option value="camping">Camping</option>
+    </select>
+    <button onclick="recommendTent()">Get Recommendation</button>
+    <p id="recommendation"></p>
+  </section>
+
+  <!-- AI-Powered Search -->
+  <section id="search" class="search-section">
+    <h2>Search for a Tent</h2>
+    <input type="text" id="search-input" placeholder="Search for tents..." oninput="searchProducts()">
+    <div id="search-results" class="search-results"></div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Kenraw Tents Limited. All rights reserved.</p>
+    <p>Contact us at: <a href="mailto:info@kenrawtents.com">info@kenrawtents.com</a></p>
+    <div class="social-media">
+      <a href="#">Facebook</a>
+      <a href="#">Instagram</a>
+      <a href="#">Twitter</a>
+    </div>
+  </footer>
+
+  <!-- AI Features JavaScript -->
+  <script>
+    let currentIndex = 0;
+
+    function moveCarousel(direction) {
+      const images = document.querySelector('.carousel-images');
+      const totalImages = images.children.length;
+      currentIndex = (currentIndex + direction + totalImages) % totalImages;
+      images.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }
+
+    // AI-Based Product Recommendations
+    function recommendTent() {
+      let tentType = document.getElementById('tent-type').value;
+      let recommendation = "";
+
+      if (tentType === "event") {
+        recommendation = "We recommend our spacious Event Tent, perfect for weddings and corporate events!";
+      } else if (tentType === "camping") {
+        recommendation = "Our Camping Tent is great for outdoor adventures with a durable design!";
+      } else {
+        recommendation = "Tell us more about your needs so we can help you find the perfect tent!";
+      }
+
+      document.getElementById('recommendation').innerText = recommendation;
+    }
+
+    // AI-Powered Search
+    function searchProducts() {
+      let query = document.getElementById('search-input').value;
+      let results = document.getElementById('search-results');
+
+      if (query.length > 2) {
+        results.innerHTML = `Searching for tents matching: <strong>${query}</strong>...`;
+      } else {
+        results.innerHTML = '';
+      }
+    }
+  </script>
+
+</body>
+</html>
